@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: my-db
-  namespace: ns-replicaset
+  namespace: ns-db
 spec:
   replicas: 1
   selector:

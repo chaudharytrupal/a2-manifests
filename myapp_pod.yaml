@@ -2,17 +2,15 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: my-app
+  namespace: ns-app
   labels:
     name: my-app
+    app: employees
     owner: trupal
 spec:
   containers:
     - name: my-app
       image: 120587352063.dkr.ecr.us-east-1.amazonaws.com/my_app:v1
-      resources:
-        limits:
-          memory: "1000Mi"
-          cpu: "500m"
       ports:
         - containerPort: 8080
       env:

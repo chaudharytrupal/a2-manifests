@@ -2,17 +2,15 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: my-db
+  namespace: ns-db
   labels:
     name: my-db
+    app: mysql
     owner: trupal
 spec:
   containers:
     - name: my-db
       image: 120587352063.dkr.ecr.us-east-1.amazonaws.com/my_db:v1
-      resources:
-        limits:
-          memory: "1000Mi"
-          cpu: "500m"
       ports:
         - containerPort: 3306
       env:
