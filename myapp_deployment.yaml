@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  namespace: ns-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employees
+  template:
+    metadata:
+      name: my-app
+      labels:
+        app: employees
+        owner: trupal
+    spec:
+      containers:
+        - name: my-app
+          image: 120587352063.dkr.ecr.us-east-1.amazonaws.com/my_app:v1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DBHOST
+              value: "10.244.0.13" #needs updating according to pod ip of the DB
+            - name: DBPORT
+              value: "3306"
+            - name: DBUSER
+              value: "root"
+            - name: DATABASE
+              value: "employees"
+            - name: DBPWD
+              value: "P@ssw0rd"

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-db
+  namespace: ns-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      name: my-db
+      labels:
+        app: mysql
+        owner: trupal
+    spec:
+      containers:
+        - name: my-db
+          image: 120587352063.dkr.ecr.us-east-1.amazonaws.com/my_db:v1
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "P@ssw0rd"
