@@ -18,10 +18,6 @@ spec:
       containers:
         - name: my-db
           image: 120587352063.dkr.ecr.us-east-1.amazonaws.com/my_db:v1
-          resources:
-            limits:
-              memory: "1000Mi"
-              cpu: "500m"
           ports:
             - containerPort: 3306
           env:
