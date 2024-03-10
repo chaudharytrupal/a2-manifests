@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app
+  namespace: ns-app
+  labels:
+    owner: trupal
+    servicetype: nodeport
+spec:
+  selector:
+    app: employees
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30000
+  type: NodePort
