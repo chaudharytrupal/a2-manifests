@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-app
+  labels:
+    name: my-app
+    owner: trupal
+spec:
+  containers:
+    - name: my-app
+      image: 120587352063.dkr.ecr.us-east-1.amazonaws.com/my_app:v1
+      resources:
+        limits:
+          memory: "1000Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 8080
+      env:
+        - name: DBHOST
+          value: "10.244.0.13" #needs updating according to pod ip of the DB
+        - name: DBPORT
+          value: "3306"
+        - name: DBUSER
+          value: "root"
+        - name: DATABASE
+          value: "employees"
+        - name: DBPWD
+          value: "P@ssw0rd"
