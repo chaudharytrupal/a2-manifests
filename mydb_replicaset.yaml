@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-db
+  namespace: ns-replicaset
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      name: my-db
+      labels:
+        app: mysql
+        owner: trupal
+    spec:
+      containers:
+        - name: my-db
+          image: 120587352063.dkr.ecr.us-east-1.amazonaws.com/my_db:v1
+          resources:
+            limits:
+              memory: "1000Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "P@ssw0rd"
